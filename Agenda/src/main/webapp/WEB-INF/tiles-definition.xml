@@ -5,10 +5,23 @@
 
 <tiles-definitions>
 
-	<definition name="template" template="/WEB-INF/tiles/template.jsp">
+	<definition name="template-login" template="/WEB-INF/tiles/template-login.jsp">
+		<put-attribute name="header-resources" value="/WEB-INF/tiles/header-resources.jsp" />
+		<put-attribute name="title" value="/WEB-INF/tiles/title.jsp" />
 		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
 		<put-attribute name="body" value="/WEB-INF/tiles/body.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp" />
+		<put-attribute name="footer-resources" value="/WEB-INF/tiles/footer-resources.jsp" />
+	</definition>
+	
+	<definition name="template" template="/WEB-INF/tiles/template.jsp">
+		<put-attribute name="header-resources" value="/WEB-INF/tiles/header-resources.jsp" />
+		<put-attribute name="title" value="/WEB-INF/tiles/title.jsp" />
+		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
+		<put-attribute name="nav" value="/WEB-INF/tiles/nav.jsp" />
+		<put-attribute name="body" value="/WEB-INF/tiles/body.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp" />
+		<put-attribute name="footer-resources" value="/WEB-INF/tiles/footer-resources.jsp" />
 	</definition>
 
 </tiles-definitions>
