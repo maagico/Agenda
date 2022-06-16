@@ -11,8 +11,8 @@ public class LoginController {
 		return "login";
 	}
 	
-	@GetMapping("/listado")
-	public String listado() {
-		return "listado";
+	@GetMapping("/listadoContactos")
+	public String listadoContactos() {
+		return "listadoContactos";
 	}
 }

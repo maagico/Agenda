@@ -20,15 +20,17 @@
 				<tr>
 			    	<th scope="col">Nombre</th>
 			      	<th scope="col">Apellidos</th>
-			      	<th scope="col">Teléfono</th>
-			      	<th scope="col">Editar</th>
+			      	<th scope="col">Teléfono/s</th>
+			      	<th scope="col">Editar contacto</th>
 			    </tr>
 			  </thead>
 		  	  <tbody>
 			  	<tr>
-			   		<td>Mark</td>
-				    <td>Otto</td>
-				    <td>555550987</td>
+			   		<td>Miguel Ángel</td>
+				    <td>Álvarez García</td>
+				    <td>555550987<br/>
+				    	555550988<br/>
+				    </td>
 				    <td>
 				    	<a href = "#">
 					    	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
