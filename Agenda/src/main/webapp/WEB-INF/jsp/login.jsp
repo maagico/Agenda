@@ -20,21 +20,41 @@
 	</tiles:putAttribute>	 
 	
     <tiles:putAttribute name="body">
-	
+		
 		<main class="form-signin w-100 m-auto">
+			
 			<form action = "/login" method="post">
+				
 				<h1 class="h3 mb-3 fw-normal">Loguéate para acceder a la Agenda</h1>
+			    
 			    <div class="form-floating">
+			      
 			      <input id="floatingInput" type="text" name = "username" class="form-control" placeholder="Usuario" maxlength="20" required="required">
 			      <label for="floatingInput">Usuario</label>
+			    
 			    </div>
+			    
 			    <br/>
+			    
 			    <div class="form-floating">
 			      <input id="floatingPassword" type="password" name = "password" class="form-control" placeholder="Password" maxlength="20" required="required">
 			      <label for="floatingPassword">Password</label>
 			    </div>
 			    
-			    <br/>
+			    <c:if test = "${param['error'] == null}">
+			    	<br/>
+			    </c:if>
+			    
+			    <c:if test = "${param['error'] != null}">
+				
+					<span class = "color-rojo">
+						Usuario o password incorrectos
+					</span>
+					
+					<br/>
+					<br/>
+					
+				</c:if>
 			    
 			    <button class="w-100 btn btn-lg btn-success" type="submit">Entrar</button>
 			    <br/><br/>

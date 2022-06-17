@@ -1,6 +1,8 @@
 package es.agenda.dao;
 
-public interface GenericDaoI<T>
+public interface GenericDaoI<M>
 {
-	T findById(Long id); 
+	M findById(Long id); 
+	
+	M save(M modelo);
 }

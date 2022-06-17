@@ -29,7 +29,7 @@ public class TilesConfiguration {
 		String[] defs = { "WEB-INF/tiles-definition.xml" };
 
 		tilesConfigurer.setDefinitions(defs);
-		//tilesConfigurer.setCheckRefresh(true);
+		tilesConfigurer.setCheckRefresh(true);
 				
 		return tilesConfigurer;
 	}

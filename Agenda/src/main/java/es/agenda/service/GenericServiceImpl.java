@@ -15,9 +15,11 @@ public class GenericServiceImpl<M,D extends GenericDaoI<M>> implements GenericSe
 
 	@Override
 	public M findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.findById(id);
 	}
 
-	
+	@Override
+	public M save(M modelo) {
+		return dao.save(modelo);
+	}	
 }

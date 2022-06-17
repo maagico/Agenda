@@ -3,16 +3,27 @@ package es.agenda.dao;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import es.agenda.model.Usuario;
-
-public class GenericDaoImpl<T> implements GenericDaoI<T>
+public class GenericDaoImpl<M> implements GenericDaoI<M>
 { 
-	@PersistenceContext
-	EntityManager entityManager;
+	private Class<M> clazz;
 	
-	@SuppressWarnings("unchecked")
+	@PersistenceContext
+	protected EntityManager entityManager;
+	
+	public GenericDaoImpl(Class<M> clazz) {
+		this.clazz = clazz;
+	}
+	
 	@Override
-	public T findById(Long id) {
-		return (T) entityManager.find(Usuario.class, id);
+	public M findById(Long id) {
+		
+		return (M) entityManager.find(clazz, id);
+	}
+
+	@Override
+	public M save(M modelo) {
+		
+		entityManager.persist(modelo);
+		return modelo;
 	}
 }
