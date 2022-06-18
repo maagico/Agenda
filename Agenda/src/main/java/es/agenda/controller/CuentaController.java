@@ -3,6 +3,7 @@ package es.agenda.controller;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.apache.commons.beanutils.BeanUtils;
@@ -42,6 +43,7 @@ public class CuentaController {
 	@PostMapping("/crearCuenta")
 	public String crearCuenta(@Valid CrearCuentaForm crearCuentaForm,
 						      BindingResult result,
+						      HttpServletRequest request,
 							  Model model) throws IllegalAccessException, InvocationTargetException {
 		
 		if(result.hasErrors()) {
@@ -60,7 +62,16 @@ public class CuentaController {
 			
 			usuarioService.merge(usuario);
 			
-			return "admin/listadoUsuarios";
+			boolean esAdmin = request.isUserInRole("ADMIN");
+			
+			if(esAdmin) {
+				
+				return "redirect:/admin/listadoUsuarios";
+				
+			}else {
+				
+				return "redirect:/listadoContactos";
+			}
 		}		
 	}
 }
