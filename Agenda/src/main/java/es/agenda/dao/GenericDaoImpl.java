@@ -1,5 +1,7 @@
 package es.agenda.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -20,10 +22,26 @@ public class GenericDaoImpl<M> implements GenericDaoI<M>
 		return (M) entityManager.find(clazz, id);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public M save(M modelo) {
+	public List<M> findAll(){
+		
+		return (List<M>) entityManager.createQuery("Select M from " + clazz.getSimpleName() + " M").getResultList();
+	}
+	
+	@Override
+	public M persist(M modelo) {
 		
 		entityManager.persist(modelo);
+		
+		return modelo;
+	}
+	
+	@Override
+	public M merge(M modelo) {
+		
+		entityManager.merge(modelo);
+				
 		return modelo;
 	}
 }

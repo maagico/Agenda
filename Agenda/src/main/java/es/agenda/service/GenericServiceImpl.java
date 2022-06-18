@@ -1,5 +1,7 @@
 package es.agenda.service;
 
+import java.util.List;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import es.agenda.dao.GenericDaoI;
@@ -18,8 +20,17 @@ public class GenericServiceImpl<M,D extends GenericDaoI<M>> implements GenericSe
 		return dao.findById(id);
 	}
 
+	public List<M> findAll(){
+		return dao.findAll();
+	}
+	
 	@Override
-	public M save(M modelo) {
-		return dao.save(modelo);
+	public M persist(M modelo) {
+		return dao.persist(modelo);
+	}	
+	
+	@Override
+	public M merge(M modelo) {
+		return dao.merge(modelo);
 	}	
 }

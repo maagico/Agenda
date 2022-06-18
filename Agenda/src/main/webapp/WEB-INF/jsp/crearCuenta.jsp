@@ -54,9 +54,10 @@
 			   	<form:errors path="roleId" cssClass="color-rojo"/>
 			   	  
 			    <form:select id = "roleId" path = "roleId" class="form-select" aria-label="Selecciona un rol">
-					<option value="" selected>Selecciona un rol</option>
-				  	<option value="1">Usuario</option>
-				  	<option value="2">Admin</option>
+					
+					<form:option value="" label="Selecciona un rol..."/>
+					<form:options items="${roles}" itemValue="id" itemLabel="nombre"/>
+				
 				</form:select>
 			    
 			    <br/>

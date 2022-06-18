@@ -1,8 +1,14 @@
 package es.agenda.dao;
 
+import java.util.List;
+
 public interface GenericDaoI<M>
 {
 	M findById(Long id); 
 	
-	M save(M modelo);
+	List<M> findAll();
+	
+	M persist(M modelo);
+	
+	M merge(M modelo);
 }
