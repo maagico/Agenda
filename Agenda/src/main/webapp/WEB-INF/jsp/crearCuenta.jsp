@@ -34,7 +34,7 @@
 			    
 			    <div class="form-floating">
 			   	  
-			   	  <form:input id="usuario" path = "usuario" type="text" class="form-control" placeholder="Usuario" maxlength="20"/>
+			   	  <form:input id="usuario" path = "usuario" type="text" class="form-control" placeholder="Usuario" maxlength="20" required="required"/>
 			      <label for="usuario">Usuario</label>
 			    
 			    </div>
@@ -44,7 +44,7 @@
 			    <form:errors path="password" cssClass="color-rojo"/>
 			    
 			    <div class="form-floating">
-			      <form:input id="password" path = "password" type="password" class="form-control" placeholder="Password" maxlength="20"/>
+			      <form:input id="password" path = "password" type="password" class="form-control" placeholder="Password" maxlength="20" required="required"/>
 			      <label for="password">Password</label>
 			    </div>   
                 
@@ -53,7 +53,7 @@
 			    
 			   	<form:errors path="roleId" cssClass="color-rojo"/>
 			   	  
-			    <form:select id = "roleId" path = "roleId" class="form-select" aria-label="Selecciona un rol">
+			    <form:select id = "roleId" path = "roleId" class="form-select" aria-label="Selecciona un rol" required="required">
 					
 					<form:option value="" label="Selecciona un rol..."/>
 					<form:options items="${roles}" itemValue="id" itemLabel="nombre"/>

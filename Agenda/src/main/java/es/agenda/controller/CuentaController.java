@@ -66,11 +66,11 @@ public class CuentaController {
 			
 			if(esAdmin) {
 				
-				return "redirect:/admin/listadoUsuarios";
+				return "/listadoContactos";
 				
 			}else {
 				
-				return "redirect:/listadoContactos";
+				return "/listadoUsuarios";
 			}
 		}		
 	}

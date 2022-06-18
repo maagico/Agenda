@@ -14,7 +14,7 @@ public class LoginController {
 	}
 	
 	@GetMapping("/redirigir")
-	public String listadoContactos(HttpServletRequest request) {
+	public String redirigir(HttpServletRequest request) {
 			
 		boolean esAdmin = request.isUserInRole("ADMIN");
 		
@@ -24,7 +24,7 @@ public class LoginController {
 			
 		}else {
 			
-			return "listadoContactos";
+			return "redirect:/listadoContactos";
 		}
 		
 	}

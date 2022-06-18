@@ -54,9 +54,4 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .invalidateHttpSession(true)
             .permitAll();
 	}
-	
-//	public static void main(String[] args) {
-//		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-//		System.out.println(encoder.encode("foo"));
-//	}
 }
