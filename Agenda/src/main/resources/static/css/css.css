@@ -5,3 +5,11 @@
 .color-rojo{
 	color:red;
 }
+
+.invisible{
+	display: none;
+}
+
+.visible{
+	visibility: visible;
+}

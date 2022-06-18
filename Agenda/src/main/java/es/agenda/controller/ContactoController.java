@@ -16,6 +16,13 @@ public class ContactoController {
 	@Autowired
 	private ContactoServiceI contactoService;
 	
+	@GetMapping("/addContacto")
+	public String addContacto(Model model) {
+		
+		
+		return "editarContacto";
+	}
+	
 	@GetMapping("/listadoContactos")
 	public String listadoUsuarios(Model model) {
 		
