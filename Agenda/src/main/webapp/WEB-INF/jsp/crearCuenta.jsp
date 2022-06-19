@@ -24,6 +24,16 @@
 	
 		<main class="form-signin w-100 m-auto">
 			
+			<c:if test = "${mensajeError != null}">
+				
+				<div class="alert alert-danger" role="alert">
+	 				
+	 				<c:out value = "${mensajeError}"/>
+				
+				</div>
+				
+			</c:if>
+			
 			<form:form id = "crearCuentaForm" action = "/crearCuenta" method="post" modelAttribute= "crearCuentaForm">
 				
 				

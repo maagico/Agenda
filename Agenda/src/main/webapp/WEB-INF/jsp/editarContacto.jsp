@@ -42,7 +42,7 @@
 				let enlaceCampoTelefono = "<div class='col-5' id = 'addOtroTelefonoDiv" + contadorCampoTelefono + "'>";
 				enlaceCampoTelefono +=    "		<a class='nav-link color-rojo quitarCampoTelefono'  id = 'quitarTelefono' href = 'javascript:quitarCampoTelefono(" + contadorCampoTelefono + ");'>";
 				enlaceCampoTelefono +=    "			Quitar teléfono ";
-				enlaceCampoTelefono +=    "  		<i class='bi bi-plus-circle-fill' title='Quitar teléfono'></i>";
+				enlaceCampoTelefono +=    "  		<i class='bi bi-x-circle' title='Quitar teléfono'></i>";
 				enlaceCampoTelefono +=    "  	</a> Introducir 9 dígitos ";
 				enlaceCampoTelefono +=    "</div>";
 
@@ -63,7 +63,7 @@
 				let enlaceCampoCorreo = "<div class='col-5' id = 'addOtroCorreoDiv" + contadorCampoCorreo + "'>";
 				enlaceCampoCorreo +=    "		<a class='nav-link color-rojo' href = 'javascript:quitarCampoCorreo(" + contadorCampoCorreo + ");'>";
 				enlaceCampoCorreo +=    "			Quitar correo ";
-				enlaceCampoCorreo +=    "  		<i class='bi bi-plus-circle-fill' title='Quitar correo'></i>";
+				enlaceCampoCorreo +=    "  		<i class='bi bi-x-circle' title='Quitar correo'></i>";
 				enlaceCampoCorreo +=    "  	</a>";
 				enlaceCampoCorreo +=    "</div>";
 
@@ -112,9 +112,11 @@
 				  	<label for="apellidos">Apellidos*</label>
 				</div>
 				
-				<hr/>
+				
 				
 				<div class="row g-3">
+					
+					<hr/>
 					
 					<c:forEach items = "${crearContactoForm.telefonos}" var = "telefono" varStatus = "loop">
 						

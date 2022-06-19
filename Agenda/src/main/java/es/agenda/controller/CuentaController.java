@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import es.agenda.excepcion.UsuarioYaExisteException;
 import es.agenda.form.CrearCuentaForm;
 import es.agenda.model.Rol;
 import es.agenda.model.Usuario;
@@ -46,11 +47,11 @@ public class CuentaController {
 						      HttpServletRequest request,
 							  Model model) throws IllegalAccessException, InvocationTargetException {
 		
+		List<Rol> roles = rolService.findAll();
+		model.addAttribute("roles", roles);
+		
 		if(result.hasErrors()) {
-			
-			List<Rol> roles = rolService.findAll();
-			model.addAttribute("roles", roles);
-			
+						
 			model.addAttribute("crearCuentaForm", crearCuentaForm);
 			
 			return "crearCuenta";
@@ -60,17 +61,28 @@ public class CuentaController {
 			Usuario usuario = new Usuario();
 			BeanUtils.copyProperties(usuario, crearCuentaForm);
 			
-			usuarioService.merge(usuario);
+			try {
+				
+				usuarioService.merge(usuario);
+			
+			}catch(UsuarioYaExisteException e){
+				
+				String mensajeError = "Ya existe el usuario en la base de datos, por favor elige otro";
+				
+				model.addAttribute("mensajeError", mensajeError);
+				
+				return "crearCuenta";
+			}
 			
 			boolean esAdmin = request.isUserInRole("ADMIN");
 			
 			if(esAdmin) {
 				
-				return "/listadoContactos";
+				return "redirect:/listadoUsuarios";
 				
 			}else {
 				
-				return "/listadoUsuarios";
+				return "redirect:/listadoContactos";
 			}
 		}		
 	}
