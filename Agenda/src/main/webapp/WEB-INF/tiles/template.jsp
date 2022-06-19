@@ -14,6 +14,7 @@
 		<tiles:insertAttribute name="title"/>
 		<tiles:insertAttribute name="header"/>
 		<tiles:insertAttribute name="header-resources"/>
+		<tiles:insertAttribute name="scripts"/>
 		
 		<link href="css/css.css?1" rel="stylesheet">
 	</head>

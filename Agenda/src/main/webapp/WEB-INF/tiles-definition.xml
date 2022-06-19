@@ -18,6 +18,7 @@
 		<put-attribute name="header-resources" value="/WEB-INF/tiles/header-resources.jsp" />
 		<put-attribute name="title" value="/WEB-INF/tiles/title.jsp" />
 		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
+		<put-attribute name="scripts" value="/WEB-INF/tiles/scripts.jsp" />
 		<put-attribute name="nav" value="/WEB-INF/tiles/nav.jsp" />
 		<put-attribute name="body" value="/WEB-INF/tiles/body.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp" />
