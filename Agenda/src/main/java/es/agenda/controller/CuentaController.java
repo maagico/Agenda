@@ -63,11 +63,11 @@ public class CuentaController {
 			
 			try {
 				
-				usuarioService.merge(usuario);
+				usuarioService.guardarUsuario(usuario);
 			
 			}catch(UsuarioYaExisteException e){
 				
-				String mensajeError = "Ya existe el usuario en la base de datos, por favor elige otro";
+				String mensajeError = "El usuario ya existe, por favor elige otro";
 				
 				model.addAttribute("mensajeError", mensajeError);
 				

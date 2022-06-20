@@ -1,6 +1,6 @@
 package es.agenda.excepcion;
 
-public class UsuarioYaExisteException extends RuntimeException{
+public class UsuarioYaExisteException extends Exception{
 	
 	private static final long serialVersionUID = 3205385258251876327L;
 

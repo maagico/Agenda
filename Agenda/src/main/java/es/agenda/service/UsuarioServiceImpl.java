@@ -14,7 +14,7 @@ public class UsuarioServiceImpl extends GenericServiceImpl<Usuario, UsuarioDaoI>
 		super(dao);
 	}
 	
-	public Usuario merge(Usuario usuario) {
+	public Usuario guardarUsuario(Usuario usuario) throws UsuarioYaExisteException {
 	
 		
 		String usu = usuario.getUsuario();

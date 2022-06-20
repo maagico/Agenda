@@ -52,7 +52,7 @@
 			}
 
 			function addCampoCorreo(correo){
-
+				
 				let campoCorreoDiv = "<div class='col-5' id = 'addCampoCorreoDiv" + contadorCampoCorreo + "'>";
 				campoCorreoDiv +=    "	<div class='form-floating mb-3'>";
 				campoCorreoDiv +=    "		<input type='email' name = 'correos' class='form-control' id = 'correo" + contadorCampoCorreo + "' placeholder='Correo' maxlength='20'' value = '" + correo + "'>";
@@ -86,7 +86,7 @@
 
 			function irAListadoContactos(){
 
-				location.href = "/listadoContactos";
+				location.href = "/web/listadoContactos";
 			}
 			
 		</script>
@@ -100,7 +100,7 @@
 		
 			<h2>Introduce los datos del nuevo contacto</h2>
 		
-			<form:form action = "/crearContacto" method = "post" id ="contactoForm" name = "contactoForm"  modelAttribute="crearContactoForm">
+			<form:form action = "/web/crearContacto" method = "post" id ="contactoForm" name = "contactoForm"  modelAttribute="crearContactoForm">
 			
 				<div class="form-floating mb-3">
 					<form:input path = "nombre" type="tel" class="form-control" id="nombre" placeholder="Nombre" required = "required"/>
@@ -125,7 +125,7 @@
 								
 								<div class="form-floating mb-3" id = "campoTelefonoDiv">
 								  	
-								  	<form:input path = "telefonos" type="tel" class="form-control" id="telefono${loop.index}" placeholder="Teléfono" maxlength="20" pattern="[0-9]{9}" value = "${telefono}"/>
+								  	<input name = "telefonos" type="tel" class="form-control" id="telefono${loop.index}" placeholder="Teléfono" maxlength="9" pattern="[0-9]{9}" value = "${telefono}"/>
 								  	<label for="telefono">Teléfono</label>
 								  						
 								</div>
@@ -142,10 +142,11 @@
 									Introducir 9 dígitos
 							</div>
 						</c:if>
+						
 						<script>
 
-							<c:if test  ="${loop.index > 0}">
-								addCampoTelefono(${telefono});
+							<c:if test = "${loop.index > 0}">
+								addCampoTelefono('${telefono}');
 							</c:if>
 							
 						</script>
@@ -161,7 +162,7 @@
 								
 								<div class="form-floating mb-3">
 								  	
-								  	<form:input path = "correos" type="email" class="form-control" id="correo${loop.index}" placeholder="Correo electrónico" value = "${correo}"/>
+								  	<input name = "correos" type="email" class="form-control" id="correo${loop.index}" placeholder="Correo electrónico" value = "${correo}"/>
 								  	<label for="correo">Correo electrónico</label>
 								
 								</div>

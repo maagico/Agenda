@@ -15,7 +15,7 @@
 	
 	<tiles:putAttribute name="header-resources">
 	
-	<link href="css/signin.css" rel="stylesheet">
+	<link href="<c:url value = 'css/signin.css'/>" rel="stylesheet">
 	
 	</tiles:putAttribute>	 
 	

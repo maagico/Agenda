@@ -37,7 +37,7 @@
 					    	</c:forEach>
 					    </td>
 					    <td>
-					   		<a href = "/editarContacto?id=<c:out value = '${contacto.id}'/>"><i class="bi bi-arrow-right"></i></a> 
+					   		<a href = "/web/editarContacto?id=<c:out value = '${contacto.id}'/>"><i class="bi bi-arrow-right"></i></a> 
 						</td>
 					</tr>
 				</c:forEach>

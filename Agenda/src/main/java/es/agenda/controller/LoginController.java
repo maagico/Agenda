@@ -24,7 +24,7 @@ public class LoginController {
 			
 		}else {
 			
-			return "redirect:/listadoContactos";
+			return "redirect:/web/listadoContactos";
 		}
 		
 	}

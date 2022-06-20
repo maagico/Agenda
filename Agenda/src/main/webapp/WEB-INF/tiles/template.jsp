@@ -16,7 +16,7 @@
 		<tiles:insertAttribute name="header-resources"/>
 		<tiles:insertAttribute name="scripts"/>
 		
-		<link href="css/css.css?1" rel="stylesheet">
+		<link href="/css/css.css?1" rel="stylesheet">
 	</head>
 	
 	<body>

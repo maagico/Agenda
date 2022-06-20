@@ -19,7 +19,7 @@ public class ContactoController {
 	@Autowired
 	private ContactoServiceI contactoService;
 	
-	@GetMapping("/addContacto")
+	@GetMapping("/web/addContacto")
 	public String addContacto(Model model) {
 		
 		CrearContactoForm crearContactoForm = new CrearContactoForm();
@@ -29,25 +29,33 @@ public class ContactoController {
 		
 		model.addAttribute("crearContactoForm", crearContactoForm);
 		
-		return "editarContacto";
+		return "web/editarContacto";
 	}
 	
-	@GetMapping("/listadoContactos")
+	@GetMapping("/web/listadoContactos")
 	public String listadoUsuarios(Model model) {
 		
 		List<Contacto> contactos = contactoService.findAllOrderByNombre();
 		
 		model.addAttribute("contactos", contactos);
 		
-		return "listadoContactos";
+		return "web/listadoContactos";
 	}
 	
-	@PostMapping("/crearContacto")
+	@PostMapping("/web/crearContacto")
 	public String crearContacto(CrearContactoForm crearContactoForm,
 							    Model model) throws IllegalAccessException, InvocationTargetException{
 		
-		model.addAttribute("crearContactoForm", crearContactoForm);
+		if(crearContactoForm.getTelefonos() == null || crearContactoForm.getTelefonos().isEmpty()) {
+			crearContactoForm.setTelefonos(List.of(""));
+		}
 		
-		return "editarContacto";
+		if(crearContactoForm.getCorreos() == null || crearContactoForm.getCorreos().isEmpty()) {
+			crearContactoForm.setCorreos(List.of(""));
+		}
+		
+		model.addAttribute("crearContactoForm", crearContactoForm);
+
+		return "web/editarContacto";
 	}
 }

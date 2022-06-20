@@ -4,7 +4,7 @@
 <nav class="navbar navbar-expand-lg bg-light">
 	
 	<div class="container-fluid">
-    	<a class="navbar-brand" href="<c:url value='/listadoContactos'/>">Agenda</a>
+    	<a class="navbar-brand" href="<c:url value='listadoContactos'/>">Agenda</a>
     	
     	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggler" aria-controls="toogle" aria-expanded="false">
       		<span class="navbar-toggler-icon"></span>
@@ -15,7 +15,7 @@
       		<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 	        	
 	        	<li class="nav-item">
-	          		<a class="nav-link color-verde" aria-current="page" href="<c:url value='/addContacto'/>">
+	          		<a class="nav-link color-verde" aria-current="page" href="<c:url value='/web/addContacto'/>">
 	          			Añadir contacto 
 	          			<i class="bi bi-person-plus"></i>
 	          		</a>
@@ -31,7 +31,7 @@
 	        	
       		</ul>
       		
-      		<form:form class="d-flex" role="search" action="/buscarContacto">
+      		<form:form class="d-flex" role="search" action="/web/buscarContacto">
         		
         		<input class="form-control me-2" type="search" placeholder="Buscar contacto" aria-label="Buscar">
         		<button class="btn btn-outline-success" type="submit">Buscar</button>
