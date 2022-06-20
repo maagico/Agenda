@@ -1,38 +1,46 @@
 package es.agenda.model;
 
-import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "contactos")
-@Data
 public class Contacto {
 
+	@Getter
+	@Setter
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Getter
+	@Setter
 	@Column	
 	private String nombre;
 	
+	@Getter
+	@Setter
 	@Column
 	private String apellidos;
 	
-	@OneToMany
-    @JoinColumn(name = "contacto_id")
-	private List<Telefono> telefonos;
+	@Getter
+	@Setter
+	@OneToMany(mappedBy = "contacto", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<Telefono> telefonos;
 	
-	@OneToMany
-	@JoinColumn(name = "contacto_id")
-	private List<Correo> correos;
+	@Getter
+	@Setter
+	@OneToMany(mappedBy = "contacto", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<Correo> correos;
 }

@@ -31,11 +31,15 @@
 			  		<tr>
 				   		<td><c:out value = "${contacto.nombre}"/></td>
 					    <td><c:out value = "${contacto.apellidos}"/></td>
+					    
 					    <td>
+					    	
 					    	<c:forEach items="${contacto.telefonos}" var="telefono">
 					    		<c:out value = "${telefono.numero}"/><br/>
 					    	</c:forEach>
+					    	
 					    </td>
+					    
 					    <td>
 					   		<a href = "/web/editarContacto?id=<c:out value = '${contacto.id}'/>"><i class="bi bi-arrow-right"></i></a> 
 						</td>

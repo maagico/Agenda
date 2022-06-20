@@ -33,7 +33,7 @@ public class GenericDaoImpl<M> implements GenericDaoI<M>
 	public M persist(M modelo) {
 		
 		entityManager.persist(modelo);
-		
+				
 		return modelo;
 	}
 	

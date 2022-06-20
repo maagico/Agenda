@@ -2,10 +2,9 @@ package es.agenda.service;
 
 import java.util.List;
 
-import org.springframework.transaction.annotation.Transactional;
+import javax.transaction.Transactional;
 
 import es.agenda.dao.GenericDaoI;
-import es.agenda.excepcion.UsuarioYaExisteException;
 
 @Transactional
 public class GenericServiceImpl<M,D extends GenericDaoI<M>> implements GenericServiceI<M>
