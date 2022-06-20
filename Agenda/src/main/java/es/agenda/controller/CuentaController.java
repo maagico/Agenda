@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import es.agenda.excepcion.UsuarioYaExisteException;
-import es.agenda.form.CrearCuentaForm;
+import es.agenda.form.CuentaForm;
 import es.agenda.model.Rol;
 import es.agenda.model.Usuario;
 import es.agenda.service.RolServiceI;
@@ -33,7 +33,7 @@ public class CuentaController {
 	@GetMapping("/irACrearCuenta")
 	public String irACrearCuenta(Model model) {
 		
-		model.addAttribute("crearCuentaForm", new CrearCuentaForm());
+		model.addAttribute("cuentaForm", new CuentaForm());
 		
 		List<Rol> roles = rolService.findAll();
 		model.addAttribute("roles", roles);
@@ -42,7 +42,7 @@ public class CuentaController {
 	}
 	
 	@PostMapping("/crearCuenta")
-	public String crearCuenta(@Valid CrearCuentaForm crearCuentaForm,
+	public String crearCuenta(@Valid CuentaForm cuentaForm,
 						      BindingResult result,
 						      HttpServletRequest request,
 							  Model model) throws IllegalAccessException, InvocationTargetException {
@@ -52,14 +52,14 @@ public class CuentaController {
 		
 		if(result.hasErrors()) {
 						
-			model.addAttribute("crearCuentaForm", crearCuentaForm);
+			model.addAttribute("cuentaForm", cuentaForm);
 			
 			return "crearCuenta";
 			
 		}else {
 			
 			Usuario usuario = new Usuario();
-			BeanUtils.copyProperties(usuario, crearCuentaForm);
+			BeanUtils.copyProperties(usuario, cuentaForm);
 			
 			try {
 				
@@ -74,16 +74,7 @@ public class CuentaController {
 				return "crearCuenta";
 			}
 			
-			boolean esAdmin = request.isUserInRole("ADMIN");
-			
-			if(esAdmin) {
-				
-				return "redirect:/listadoUsuarios";
-				
-			}else {
-				
-				return "redirect:/listadoContactos";
-			}
+			return "redirect:/redirigir";
 		}		
 	}
 }

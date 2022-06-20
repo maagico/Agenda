@@ -33,4 +33,9 @@ public class GenericServiceImpl<M,D extends GenericDaoI<M>> implements GenericSe
 	public M merge(M modelo) {
 		return dao.merge(modelo);
 	}	
+	
+	@Override
+	public void remove(M modelo) {
+		dao.remove(modelo);
+	}	
 }

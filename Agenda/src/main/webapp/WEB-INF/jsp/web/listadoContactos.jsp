@@ -14,6 +14,19 @@
 	</tiles:putAttribute>
 	
     <tiles:putAttribute name="body">
+		
+	
+		<c:if test = "${mensaje != null}">
+			
+			<br/>
+					
+			<div class="alert alert-success" role="alert">
+ 				
+ 				<c:out value = "${mensaje}"/>
+			
+			</div>
+				
+		</c:if>
 	
 		<table class="table">
 			<thead>
@@ -26,6 +39,14 @@
 			  </thead>
 		  	  <tbody>
 		  	  	
+		  	  	<c:if test = "${numeroContactos == 0}">
+		  	  		
+		  	  		<tr>
+		  	  			<td colspan="5">No hay contactos</td>
+		  	  		</tr>
+		  	  		
+		  	  	</c:if>
+		  	  			  	  	
 		  	  	<c:forEach items="${contactos}" var="contacto">
 			  		
 			  		<tr>

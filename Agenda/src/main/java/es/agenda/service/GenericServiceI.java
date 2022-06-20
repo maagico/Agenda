@@ -11,4 +11,6 @@ public interface GenericServiceI<T>{
 	T persist(T entidad);
 	
 	T merge(T entidad);
+	
+	void remove(T entidad);
 }

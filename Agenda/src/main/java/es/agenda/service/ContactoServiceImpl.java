@@ -19,4 +19,11 @@ public class ContactoServiceImpl extends GenericServiceImpl<Contacto, ContactoDa
 		
 		return dao.findAllOrderByNombre();
 	}
+
+	@Override
+	public void remove(Contacto contacto) {
+		
+		dao.remove(contacto);
+		
+	}
 }

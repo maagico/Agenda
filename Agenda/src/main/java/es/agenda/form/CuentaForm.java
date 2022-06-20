@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
-public class CrearCuentaForm {
+public class CuentaForm {
 	
 	@NotEmpty(message = "El usuario es obligatorio")
 	private String usuario;

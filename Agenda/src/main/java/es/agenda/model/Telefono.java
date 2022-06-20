@@ -15,7 +15,6 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "telefonos")
-
 public class Telefono {
 
 	@Getter
@@ -34,4 +33,6 @@ public class Telefono {
 	@ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="contacto_id")
 	private Contacto contacto;
+	
+	
 }

@@ -44,4 +44,10 @@ public class GenericDaoImpl<M> implements GenericDaoI<M>
 				
 		return modelo;
 	}
+	
+	@Override
+	public void remove(M modelo) {
+		
+		entityManager.remove(modelo);
+	}
 }

@@ -7,7 +7,9 @@ import javax.validation.constraints.NotEmpty;
 import lombok.Data;
 
 @Data
-public class CrearContactoForm {
+public class ContactoForm {
+	
+	private Long id;
 	
 	@NotEmpty(message = "El nombre es obligatorio")
 	private String nombre;

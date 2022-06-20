@@ -11,4 +11,6 @@ public interface GenericDaoI<M>
 	M persist(M modelo);
 	
 	M merge(M modelo);
+
+	void remove(M modelo);
 }

@@ -1,6 +1,6 @@
 package es.agenda.model;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -37,10 +37,10 @@ public class Contacto {
 	@Getter
 	@Setter
 	@OneToMany(mappedBy = "contacto", cascade = CascadeType.ALL, orphanRemoval = true)
-	private Set<Telefono> telefonos;
+	private List<Telefono> telefonos;
 	
 	@Getter
 	@Setter
 	@OneToMany(mappedBy = "contacto", cascade = CascadeType.ALL, orphanRemoval = true)
-	private Set<Correo> correos;
+	private List<Correo> correos;
 }

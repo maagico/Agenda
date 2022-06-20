@@ -34,7 +34,7 @@
 				
 			</c:if>
 			
-			<form:form id = "crearCuentaForm" action = "/crearCuenta" method="post" modelAttribute= "crearCuentaForm">
+			<form:form id = "crearCuentaForm" action = "/crearCuenta" method="post" modelAttribute= "cuentaForm">
 				
 				
 				

@@ -26,7 +26,17 @@
 	<tiles:putAttribute name="scripts">
 		
 		<script>
-		
+
+			$(document).ready(function() {
+				
+				$("#eliminar").click(function(e){
+					
+					$("#contactoForm").attr("action", "/web/eliminarContacto");
+	            	$("#contactoForm").submit();
+	            					
+				});
+			});
+					
 			let contadorCampoTelefono = 1;
 			let contadorCampoCorreo = 1;
 
@@ -88,19 +98,40 @@
 
 				location.href = "/web/listadoContactos";
 			}
-			
+
 		</script>
 		
 	</tiles:putAttribute>
 	
     <tiles:putAttribute name="body">
     	
-		<br/>
+    	<br/>
+    	
+    	<c:if test = "${mensaje != null}">
+				
+			<div class="alert alert-success" role="alert">
+ 				
+ 				<c:out value = "${mensaje}"/>
+			
+			</div>
+				
+		</c:if>
+    	
 		<main class="form-signin w-100 m-auto">
 		
-			<h2>Introduce los datos del nuevo contacto</h2>
-		
-			<form:form action = "/web/crearContacto" method = "post" id ="contactoForm" name = "contactoForm"  modelAttribute="crearContactoForm">
+			<c:if test = "${esCreacion}">
+			
+				<h2>Introduce los datos del nuevo contacto</h2>
+			
+			</c:if>
+			
+			<c:if test = "${!esCreacion}">
+				<h2>Modifica los datos del contacto</h2>
+			</c:if>
+			
+			<form:form action = "/web/crearContacto" method = "post" id ="contactoForm" name = "contactoForm"  modelAttribute="contactoForm">
+			
+				<form:input path = "id" type="hidden"/>
 			
 				<div class="form-floating mb-3">
 					<form:input path = "nombre" type="tel" class="form-control" id="nombre" placeholder="Nombre" required = "required"/>
@@ -111,16 +142,15 @@
 				  	<form:input path = "apellidos" type="text" class="form-control" id="apellidos" placeholder="Apellidos" required = "required"/>
 				  	<label for="apellidos">Apellidos*</label>
 				</div>
-				
-				
-				
+							
 				<div class="row g-3">
 					
 					<hr/>
 					
-					<c:forEach items = "${crearContactoForm.telefonos}" var = "telefono" varStatus = "loop">
+					<c:forEach items = "${contactoForm.telefonos}" var = "telefono" varStatus = "loop">
 						
 						<c:if test = "${loop.index == 0}">
+							
 							<div class="col-5">
 								
 								<div class="form-floating mb-3" id = "campoTelefonoDiv">
@@ -155,7 +185,7 @@
 					
 					<hr/>
 					
-					<c:forEach items = "${crearContactoForm.correos}" var = "correo" varStatus = "loop">
+					<c:forEach items = "${contactoForm.correos}" var = "correo" varStatus = "loop">
 						
 						<c:if test = "${loop.index == 0}">
 							<div class="col-5">
@@ -190,17 +220,58 @@
 						
 						<div class="row g-3">
 					
-							<div class="col-6">
+							<c:if test = "${esCreacion}">
 							
-								<button class="w-100 btn btn-lg btn-primary" type="button" onclick="javascript:irAListadoContactos();">Volver</button>
+								<div class="col-6">
+							
+							</c:if>
+							
+							<c:if test = "${!esCreacion}">
+							
+								<div class="col-4">
+							
+							</c:if>
+					
+							
+							<button class="w-100 btn btn-lg btn-primary" type="button" onclick="javascript:irAListadoContactos();">Volver</button>
 							
 							</div>
-							
-							<div class="col-6">
+														
+								<c:if test = "${esCreacion}">
 								
-								<button class="w-100 btn btn-lg btn-success" type="submit">Crear contacto</button>	
-							
+									<div class="col-6">
+								
+								</c:if>
+								
+								<c:if test = "${!esCreacion}">
+								
+									<div class="col-4">
+								
+								</c:if>
+														
+								<c:if test = "${esCreacion}">
+									
+									<button class="w-100 btn btn-lg btn-success" type="submit">Crear contacto</button>	
+								
+								</c:if>
+								
+								<c:if test = "${!esCreacion}">
+								
+									<button class="w-100 btn btn-lg btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#modal">eliminar</button>	
+									
+								</c:if>
+								
 							</div>
+							
+							<c:if test = "${!esCreacion}">
+								
+								<div class="col-4">
+								
+									<button class="w-100 btn btn-lg btn-success" type="submit">Modificar</button>	
+								
+								</div>
+									
+							</c:if>
 							
 						</div>
 						
@@ -208,7 +279,35 @@
 					
 				</form:form>
 				
-			</main>
+				<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+					
+					<div class="modal-dialog">
+						
+						<div class="modal-content">
+					    	
+					    	<div class="modal-header">
+					        	<h5 class="modal-title" id="modalLabel">Eliminar contacto</h5>
+					        	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					      	</div>
+					      	
+					      	<div class="modal-body">
+					       		¿Quieres eliminar el contacto?
+					      	</div>
+					      	
+					      	<div class="modal-footer">
+					        	
+					        	<button type="button" class="btn btn-danger" id = "eliminar">Eliminar</button>
+					      		<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+					        
+					      	</div>
+					    
+					    </div>
+					  
+					  </div>
+					
+					</div>
+				
+		</main>
 			
  	</tiles:putAttribute>
 		
