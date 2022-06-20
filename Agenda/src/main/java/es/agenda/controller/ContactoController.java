@@ -27,13 +27,13 @@ public class ContactoController {
 	@GetMapping("/web/addContacto")
 	public String addContacto(Model model) {
 		
-		ContactoForm crearContactoForm = new ContactoForm();
+		ContactoForm contactoForm = new ContactoForm();
 		
-		crearContactoForm.setTelefonos(List.of(""));
+		contactoForm.setTelefonos(List.of(""));
 		
-		crearContactoForm.setCorreos(List.of(""));
+		contactoForm.setCorreos(List.of(""));
 		
-		model.addAttribute("crearContactoForm", crearContactoForm);
+		model.addAttribute("contactoForm", contactoForm);
 		
 		model.addAttribute("esCreacion", true);
 		
