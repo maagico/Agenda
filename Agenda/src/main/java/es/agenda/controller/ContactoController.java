@@ -58,6 +58,26 @@ public class ContactoController {
 				
 		Contacto contacto = populateContacto(contactoForm);
 		
+		contactoService.persist(contacto);
+		
+		contactoForm = populateContactoForm(contacto);
+		
+		model.addAttribute("contactoForm", contactoForm);
+		
+		model.addAttribute("mensaje", "Contacto creado correctamente");
+		
+		model.addAttribute("esCreacion", false);
+
+				
+		return "web/editarContacto";
+	}
+	
+	@PostMapping("/web/modificarContacto")
+	public String modificarContacto(ContactoForm contactoForm,
+							    	Model model) throws IllegalAccessException, InvocationTargetException {
+				
+		Contacto contacto = populateContacto(contactoForm);
+		
 		contactoService.merge(contacto);
 		
 		contactoForm = populateContactoForm(contacto);

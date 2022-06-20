@@ -35,6 +35,14 @@
 	            	$("#contactoForm").submit();
 	            					
 				});
+
+				$("#modificar").click(function(e){
+					
+					$("#contactoForm").attr("action", "/web/modificarContacto");
+	            	$("#contactoForm").submit();
+	            					
+				});
+				
 			});
 					
 			let contadorCampoTelefono = 1;
@@ -267,7 +275,7 @@
 								
 								<div class="col-4">
 								
-									<button class="w-100 btn btn-lg btn-success" type="submit">Modificar</button>	
+									<button class="w-100 btn btn-lg btn-success" type="submit" id = "modificar">Modificar</button>	
 								
 								</div>
 									
