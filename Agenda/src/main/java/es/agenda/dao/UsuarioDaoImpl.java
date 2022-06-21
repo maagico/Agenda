@@ -14,12 +14,12 @@ public class UsuarioDaoImpl extends GenericDaoImpl<Usuario> implements UsuarioDa
 		super(Usuario.class);
 	}
 	
-	public Boolean comprobarSiExisteUsuario(String usuario) {
+	public Boolean comprobarSiExisteUsuario(String nombreUsuario) {
 		
-		String jpql = "Select U from Usuario U where U.usuario = :usuario";
+		String jpql = "Select U from Usuario U where U.usuario = :nombreUsuario";
 		
 		Query query = entityManager.createQuery(jpql);
-		query.setParameter("usuario", usuario);
+		query.setParameter("nombreUsuario", nombreUsuario);
 		
 		Usuario usu = null;
 		try {
@@ -32,5 +32,16 @@ public class UsuarioDaoImpl extends GenericDaoImpl<Usuario> implements UsuarioDa
 		}
 		
 		return usu != null;
+	}
+
+	@Override
+	public Usuario findByNombreUsuario(String nombreUsuarioLogueado) {
+
+		String jpql = "Select U from Usuario U where U.usuario = :nombreUsuarioLogueado";
+		
+		Query query = entityManager.createQuery(jpql);
+		query.setParameter("nombreUsuarioLogueado", nombreUsuarioLogueado);
+		
+		return (Usuario)query.getSingleResult();
 	}
 }

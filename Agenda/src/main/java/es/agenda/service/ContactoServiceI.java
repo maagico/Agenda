@@ -6,5 +6,5 @@ import es.agenda.model.Contacto;
 
 public interface ContactoServiceI extends GenericServiceI<Contacto>{
 
-	List<Contacto> findAllOrderByNombre();
+	List<Contacto> findAllOrderByNombre(Long idUsuarioLogueado);
 }

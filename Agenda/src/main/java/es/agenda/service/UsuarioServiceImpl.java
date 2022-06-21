@@ -17,7 +17,7 @@ public class UsuarioServiceImpl extends GenericServiceImpl<Usuario, UsuarioDaoI>
 	public Usuario guardarUsuario(Usuario usuario) throws UsuarioYaExisteException {
 	
 		
-		String usu = usuario.getUsuario();
+		String nombreUsuario = usuario.getUsuario();
 		String password = usuario.getPassword();
 		
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -25,17 +25,23 @@ public class UsuarioServiceImpl extends GenericServiceImpl<Usuario, UsuarioDaoI>
 		
 		usuario.setPassword(password);
 		
-		Boolean existeUsuario = dao.comprobarSiExisteUsuario(usu);
+		Boolean existeUsuario = dao.comprobarSiExisteUsuario(nombreUsuario);
 		
 		if(existeUsuario) {
 			
 			throw new UsuarioYaExisteException("Ya existe el usuario en la base de datos", null);
 		}
 		
-		dao.merge(usuario);
+		dao.persist(usuario);
 		
-		usuario.setPassword("");
+		//usuario.setPassword("");
 		
 		return usuario;
+	}
+
+	@Override
+	public Usuario findByNombreUsuario(String nombreUsuarioLogueado) {
+		
+		return dao.findByNombreUsuario(nombreUsuarioLogueado);
 	}
 }

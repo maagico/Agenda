@@ -4,6 +4,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,17 +14,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import es.agenda.constantes.Constantes;
 import es.agenda.form.ContactoForm;
 import es.agenda.model.Contacto;
 import es.agenda.model.Correo;
 import es.agenda.model.Telefono;
+import es.agenda.model.Usuario;
 import es.agenda.service.ContactoServiceI;
+import es.agenda.service.UsuarioServiceI;
 
 @Controller
 public class ContactoController {
 
 	@Autowired
 	private ContactoServiceI contactoService;
+	
+	@Autowired
+	private UsuarioServiceI usuarioService;
 	
 	@GetMapping("/web/addContacto")
 	public String addContacto(Model model) {
@@ -41,9 +49,13 @@ public class ContactoController {
 	}
 	
 	@GetMapping("/web/listadoContactos")
-	public String listadoUsuarios(Model model) {
+	public String listadoUsuarios(HttpServletRequest request,
+								  Model model) {
 		
-		List<Contacto> contactos = contactoService.findAllOrderByNombre();
+		
+		Long idUsuarioLogueado = (Long)request.getSession().getAttribute(Constantes.ID_USUARIO_LOGUEADO);
+				
+		List<Contacto> contactos = contactoService.findAllOrderByNombre(idUsuarioLogueado);
 		
 		model.addAttribute("contactos", contactos);
 		
@@ -53,10 +65,15 @@ public class ContactoController {
 	}
 	
 	@PostMapping("/web/crearContacto")
-	public String crearContacto(ContactoForm contactoForm,
+	public String crearContacto(HttpServletRequest request,
+								ContactoForm contactoForm,
 							    Model model) throws IllegalAccessException, InvocationTargetException {
 				
-		Contacto contacto = populateContacto(contactoForm);
+		Long idUsuarioLogueado = (Long)request.getSession().getAttribute(Constantes.ID_USUARIO_LOGUEADO);
+		
+		Usuario usuarioLogueado = usuarioService.findById(idUsuarioLogueado);
+		
+		Contacto contacto = populateContacto(usuarioLogueado, contactoForm);
 		
 		contactoService.persist(contacto);
 		
@@ -73,10 +90,15 @@ public class ContactoController {
 	}
 	
 	@PostMapping("/web/modificarContacto")
-	public String modificarContacto(ContactoForm contactoForm,
+	public String modificarContacto(HttpServletRequest request,
+									ContactoForm contactoForm,
 							    	Model model) throws IllegalAccessException, InvocationTargetException {
 				
-		Contacto contacto = populateContacto(contactoForm);
+		Long idUsuarioLogueado = (Long)request.getSession().getAttribute(Constantes.ID_USUARIO_LOGUEADO);
+		
+		Usuario usuarioLogueado = usuarioService.findById(idUsuarioLogueado);
+				
+		Contacto contacto = populateContacto(usuarioLogueado, contactoForm);
 		
 		contactoService.merge(contacto);
 		
@@ -124,7 +146,7 @@ public class ContactoController {
 		return "redirect:/web/listadoContactos";
 	}
 	
-	private Contacto populateContacto(ContactoForm crearContactoForm) {
+	private Contacto populateContacto(Usuario usuarioLogueado, ContactoForm crearContactoForm) {
 		
 		if(crearContactoForm.getTelefonos() == null || crearContactoForm.getTelefonos().isEmpty()) {
 			crearContactoForm.setTelefonos(List.of(""));
@@ -143,6 +165,7 @@ public class ContactoController {
 		contacto.setId(id);
 		contacto.setNombre(nombre);
 		contacto.setApellidos(apellidos);
+		contacto.setUsuario(usuarioLogueado);
 		
 		List<Telefono> telefonos = new ArrayList<>();
 		

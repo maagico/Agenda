@@ -17,11 +17,12 @@ public class ContactoDaoImpl extends GenericDaoImpl<Contacto> implements Contact
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Contacto> findAllOrderByNombre() {
+	public List<Contacto> findAllOrderByNombre(Long idUsuario) {
 		
-		String jpql = "select C from Contacto C order by C.nombre";
+		String jpql = "select C from Contacto C where C.usuario.id = :idUsuario order by C.nombre";
 		
 		Query query =  entityManager.createQuery(jpql);
+		query.setParameter("idUsuario", idUsuario);
 		
 		return (List<Contacto>)query.getResultList();
 		

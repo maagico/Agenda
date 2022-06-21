@@ -6,5 +6,5 @@ import es.agenda.model.Contacto;
 
 public interface ContactoDaoI extends GenericDaoI<Contacto>{
 
-	List<Contacto> findAllOrderByNombre();
+	List<Contacto> findAllOrderByNombre(Long idUsuario);
 }

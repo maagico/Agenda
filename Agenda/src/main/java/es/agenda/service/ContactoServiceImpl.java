@@ -15,9 +15,9 @@ public class ContactoServiceImpl extends GenericServiceImpl<Contacto, ContactoDa
 	}
 
 	@Override
-	public List<Contacto> findAllOrderByNombre() {
+	public List<Contacto> findAllOrderByNombre(Long idUsuarioLogueado) {
 		
-		return dao.findAllOrderByNombre();
+		return dao.findAllOrderByNombre(idUsuarioLogueado);
 	}
 
 	@Override

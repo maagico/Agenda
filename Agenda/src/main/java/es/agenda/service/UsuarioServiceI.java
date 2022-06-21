@@ -6,4 +6,6 @@ import es.agenda.model.Usuario;
 public interface UsuarioServiceI extends GenericServiceI<Usuario>{
 	
 	Usuario guardarUsuario(Usuario usuario) throws UsuarioYaExisteException;
+
+	Usuario findByNombreUsuario(String nombreUsuarioLogueado);
 }

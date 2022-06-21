@@ -74,7 +74,7 @@
 				let campoCorreoDiv = "<div class='col-5' id = 'addCampoCorreoDiv" + contadorCampoCorreo + "'>";
 				campoCorreoDiv +=    "	<div class='form-floating mb-3'>";
 				campoCorreoDiv +=    "		<input type='email' name = 'correos' class='form-control' id = 'correo" + contadorCampoCorreo + "' placeholder='Correo' maxlength='70'' value = '" + correo + "'>";
-				campoCorreoDiv +=    "		<label for='correo'>Correo electrónico</label>";
+				campoCorreoDiv +=    "		<label for='correo'>Correo</label>";
 				campoCorreoDiv +=    "	</div>";
 				campoCorreoDiv +=    "</div>";
 				
@@ -200,8 +200,8 @@
 								
 								<div class="form-floating mb-3">
 								  	
-								  	<input name = "correos" type="email" class="form-control" id="correo${loop.index}" placeholder="Correo electrónico" value = "${correo}" maxlength="70"/>
-								  	<label for="correo">Correo electrónico</label>
+								  	<input name = "correos" type="email" class="form-control" id="correo${loop.index}" placeholder="Correo" value = "${correo}" maxlength="70"/>
+								  	<label for="correo">Correo</label>
 								
 								</div>
 								

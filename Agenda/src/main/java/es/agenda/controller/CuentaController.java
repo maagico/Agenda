@@ -58,13 +58,13 @@ public class CuentaController {
 			
 		}else {
 			
-			Usuario usuario = new Usuario();
-			BeanUtils.copyProperties(usuario, cuentaForm);
+			Usuario usuarioLogueado = new Usuario();
+			BeanUtils.copyProperties(usuarioLogueado, cuentaForm);
 			
 			try {
 				
-				usuarioService.guardarUsuario(usuario);
-			
+				usuarioService.guardarUsuario(usuarioLogueado);
+				
 			}catch(UsuarioYaExisteException e){
 				
 				String mensajeError = "El usuario ya existe, por favor elige otro";
@@ -74,7 +74,7 @@ public class CuentaController {
 				return "crearCuenta";
 			}
 			
-			return "redirect:/redirigir";
+			return "login";
 		}		
 	}
 }
