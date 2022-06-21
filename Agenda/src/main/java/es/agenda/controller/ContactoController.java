@@ -3,6 +3,7 @@ package es.agenda.controller;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -212,33 +213,21 @@ public class ContactoController {
 		contactoForm.setNombre(nombre);
 		contactoForm.setApellidos(apellidos);
 		
-		List<Telefono> telefonos = contacto.getTelefonos();
-		List<String> telefonosForm = new ArrayList<>();
-		
-		for(Telefono telefono : telefonos) {
-			
-			String numeroForm = telefono.getNumero();
-			
-			if(numeroForm != null && !numeroForm.equals("")) {
+		List<String> telefonosForm = contacto.getTelefonos()
+											  .stream()
+											  .filter(t -> t.getNumero() != null && !t.getNumero()
+											  .equals(""))
+											  .map(Telefono::getNumero)
+											  .collect(Collectors.toList());
 				
-				telefonosForm.add(numeroForm);
-			}
-		}
-		
 		contactoForm.setTelefonos(telefonosForm);
 		
-		List<Correo> correos = contacto.getCorreos();
-		List<String> correosForm = new ArrayList<>();
-		
-		for(Correo correo : correos) {
-			
-			String correoForm = correo.getCorreo();
-			
-			if(correoForm != null && !correoForm.equals("")) {
-				
-				correosForm.add(correoForm);
-			}
-		}
+		List<String> correosForm = contacto.getCorreos()
+										  .stream()
+										  .filter(c -> c.getCorreo() != null && !c.getCorreo()
+										  .equals(""))
+										  .map(Correo::getCorreo)
+										  .collect(Collectors.toList());
 		
 		contactoForm.setCorreos(correosForm);
 		
