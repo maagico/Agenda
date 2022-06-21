@@ -13,3 +13,7 @@
 .visible{
 	visibility: visible;
 }
+.busqueda-web{
+	color:green; 
+	margin-right:15px;
+}

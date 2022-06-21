@@ -49,9 +49,8 @@ public class ContactoController {
 	}
 	
 	@GetMapping("/web/listadoContactos")
-	public String listadoUsuarios(HttpServletRequest request,
-								  Model model) {
-		
+	public String listadoContactos(HttpServletRequest request,
+								   Model model) {
 		
 		Long idUsuarioLogueado = (Long)request.getSession().getAttribute(Constantes.ID_USUARIO_LOGUEADO);
 				

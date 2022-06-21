@@ -21,9 +21,11 @@ public class ContactoServiceImpl extends GenericServiceImpl<Contacto, ContactoDa
 	}
 
 	@Override
-	public void remove(Contacto contacto) {
+	public List<Contacto> buscarContactos(Long idUsuarioLogueado, String textoABuscar) {
 		
-		dao.remove(contacto);
+		textoABuscar = " " + textoABuscar + " ";
+		textoABuscar = textoABuscar.replace(" ", "%");
 		
+		return dao.buscarContactos(idUsuarioLogueado, textoABuscar);
 	}
 }

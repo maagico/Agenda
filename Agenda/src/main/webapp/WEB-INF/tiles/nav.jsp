@@ -31,9 +31,20 @@
 	        	
       		</ul>
       		
-      		<form:form class="d-flex" role="search" action="/web/buscarContacto">
+      		<c:if test = "${mostrarDeseleccionarBusqueda}">
+      			
+      			<span class = "busqueda-web">
+      			
+      				<a class = "nav-link color-verde" href="<c:url value='/web/listadoContactos'/>">
+      					Quitar búsqueda
+      				</a>
+      			</span>
+      		
+      		</c:if>
+      		
+      		<form:form class="d-flex" role="search" action="/web/buscarContactos" method="get">
         		
-        		<input class="form-control me-2" type="search" placeholder="Buscar contacto" aria-label="Buscar">
+        		<input class="form-control me-2" type="search" placeholder="Por nombre o apellidos" aria-label="Buscar" name = "textoABuscar"/>
         		<button class="btn btn-outline-success" type="submit">Buscar</button>
       		
       		</form:form>

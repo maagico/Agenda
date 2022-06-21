@@ -6,5 +6,7 @@ import es.agenda.model.Contacto;
 
 public interface ContactoDaoI extends GenericDaoI<Contacto>{
 
-	List<Contacto> findAllOrderByNombre(Long idUsuario);
+	List<Contacto> findAllOrderByNombre(Long idUsuarioLogueado);
+
+	List<Contacto> buscarContactos(Long idUsuarioLogueado, String textoABuscar);
 }

@@ -52,7 +52,7 @@
 
 				let campoTelefonoDiv = "<div class='col-5' id = 'addCampoTelefonoDiv" + contadorCampoTelefono + "'>";
 				campoTelefonoDiv +=    "	<div class='form-floating mb-3'>";
-				campoTelefonoDiv +=    "		<input name = 'telefonos' type='tel' class='form-control' id='telefono" + contadorCampoTelefono + "' placeholder='Teléfono' maxlength='20' pattern='[0-9]{9}' value = '" + telefono + "'/>";
+				campoTelefonoDiv +=    "		<input name = 'telefonos' type='tel' class='form-control' id='telefono" + contadorCampoTelefono + "' placeholder='Teléfono' maxlength='9' pattern='[0-9]{9}' value = '" + telefono + "'/>";
 				campoTelefonoDiv +=    "		<label for='telefono'>Teléfono</label>";
 				campoTelefonoDiv +=    "	</div>";
 				campoTelefonoDiv +=    "</div>";
