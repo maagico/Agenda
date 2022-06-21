@@ -4,7 +4,7 @@
 <nav class="navbar navbar-expand-lg bg-light">
 	
 	<div class="container-fluid">
-    	<a class="navbar-brand" href="<c:url value='listadoContactos'/>">Agenda</a>
+    	<a class="navbar-brand" href="<c:url value='/web/listadoContactos'/>">Agenda</a>
     	
     	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggler" aria-controls="toogle" aria-expanded="false">
       		<span class="navbar-toggler-icon"></span>
@@ -42,12 +42,12 @@
       		
       		</c:if>
       		
-      		<form:form class="d-flex" role="search" action="/web/buscarContactos" method="get">
+      		<form id = "buscarForm"  name = "buscarForm" class="d-flex" role="search" action="/web/buscarContactos" method="get">
         		
-        		<input class="form-control me-2" type="search" placeholder="Por nombre o apellidos" aria-label="Buscar" name = "textoABuscar"/>
+        		<input class="form-control me-2" type="search" placeholder="Por nombre o apellidos" aria-label="Buscar" id = "textoABuscar" name = "textoABuscar"/>
         		<button class="btn btn-outline-success" type="submit">Buscar</button>
       		
-      		</form:form>
+      		</form>
       		
     	</div>
     	
