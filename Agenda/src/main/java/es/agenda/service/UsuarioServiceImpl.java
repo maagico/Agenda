@@ -1,5 +1,7 @@
 package es.agenda.service;
 
+import java.util.List;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -34,8 +36,6 @@ public class UsuarioServiceImpl extends GenericServiceImpl<Usuario, UsuarioDaoI>
 		
 		dao.persist(usuario);
 		
-		//usuario.setPassword("");
-		
 		return usuario;
 	}
 
@@ -43,5 +43,11 @@ public class UsuarioServiceImpl extends GenericServiceImpl<Usuario, UsuarioDaoI>
 	public Usuario findByNombreUsuario(String nombreUsuarioLogueado) {
 		
 		return dao.findByNombreUsuario(nombreUsuarioLogueado);
+	}
+ 
+	@Override
+	public List<Usuario> findAllOrderByNombre() {
+		
+		return dao.findAllOrderByNombre();
 	}
 }

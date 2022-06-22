@@ -8,31 +8,40 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Table(name = "usuarios")
-@Data
 public class Usuario{
  
+	@Getter
+	@Setter
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Getter
+	@Setter
 	@Column
 	private String usuario;
 	
+	@Getter
+	@Setter
 	@Column
 	private String password;
-	
-	@Column
-	private Integer roleId;
-	
+		
+	@Getter
+	@Setter
+	@OneToOne
+	@JoinColumn(name="role_id")
+	private Rol rol;
+		
 	@Getter
 	@Setter
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.PERSIST, orphanRemoval = true)

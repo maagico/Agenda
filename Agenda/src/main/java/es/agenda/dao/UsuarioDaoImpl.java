@@ -1,5 +1,7 @@
 package es.agenda.dao;
 
+import java.util.List;
+
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
@@ -43,5 +45,16 @@ public class UsuarioDaoImpl extends GenericDaoImpl<Usuario> implements UsuarioDa
 		query.setParameter("nombreUsuarioLogueado", nombreUsuarioLogueado);
 		
 		return (Usuario)query.getSingleResult();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Usuario> findAllOrderByNombre() {
+		
+		String jpql = "Select U from Usuario U order by U.usuario";
+		
+		Query query = entityManager.createQuery(jpql);
+		
+		return (List<Usuario>)query.getResultList();
 	}
 }

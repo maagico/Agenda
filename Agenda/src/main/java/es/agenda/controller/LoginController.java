@@ -43,7 +43,7 @@ public class LoginController {
 		
 		if(esAdmin) {
 			
-			return "admin/listadoUsuarios";
+			return "redirect:/admin/listadoUsuarios";
 			
 		}else {
 			
