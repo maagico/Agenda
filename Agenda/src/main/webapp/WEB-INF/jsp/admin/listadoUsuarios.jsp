@@ -15,6 +15,18 @@
 	
     <tiles:putAttribute name="body">
 	
+		<c:if test = "${mensaje != null}">
+			
+			<br/>
+					
+			<div class="alert alert-success" role="alert">
+ 				
+ 				<c:out value = "${mensaje}"/>
+			
+			</div>
+				
+		</c:if>
+	
 		<table class="table">
 			<thead>
 				<tr>

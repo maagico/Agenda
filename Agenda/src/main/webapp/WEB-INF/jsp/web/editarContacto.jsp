@@ -259,7 +259,7 @@
 														
 								<c:if test = "${esCreacion}">
 									
-									<button class="w-100 btn btn-lg btn-success" type="submit">Crear contacto</button>	
+									<button class="w-100 btn btn-lg btn-success" type="submit">Crear</button>	
 								
 								</c:if>
 								

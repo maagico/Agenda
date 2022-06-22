@@ -80,7 +80,7 @@
 				<h2>Modifica los datos del usuario</h2>
 			</c:if>
 			
-			<form:form action = "/web/crearUsuario" method = "post" id ="usuarioForm" name = "usuarioForm"  modelAttribute="usuarioForm">
+			<form:form action = "/admin/crearUsuario" method = "post" id ="usuarioForm" name = "usuarioForm"  modelAttribute="usuarioForm">
 			
 				<form:input path = "id" type="hidden"/>
 			
@@ -141,7 +141,7 @@
 												
 						<c:if test = "${esCreacion}">
 							
-							<button class="w-100 btn btn-lg btn-success" type="submit">Crear contacto</button>	
+							<button class="w-100 btn btn-lg btn-success" type="submit">Crear</button>	
 						
 						</c:if>
 						

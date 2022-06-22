@@ -58,12 +58,17 @@ public class CuentaController {
 			
 		}else {
 			
-			Usuario usuarioLogueado = new Usuario();
-			BeanUtils.copyProperties(usuarioLogueado, cuentaForm);
+			Usuario usuario = new Usuario();
+			BeanUtils.copyProperties(usuario, cuentaForm);
+			
+			
+			Long roleId = cuentaForm.getRoleId();
+			Rol rol = rolService.findById(roleId);
+			usuario.setRol(rol);
 			
 			try {
 				
-				usuarioService.guardarUsuario(usuarioLogueado);
+				usuarioService.guardarUsuario(usuario);
 				
 			}catch(UsuarioYaExisteException e){
 				

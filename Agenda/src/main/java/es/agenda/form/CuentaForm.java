@@ -15,5 +15,5 @@ public class CuentaForm {
 	private String password;
 	
 	@NotNull(message = "El rol es obligatorio")
-	private Integer roleId;
+	private Long roleId;
 }
