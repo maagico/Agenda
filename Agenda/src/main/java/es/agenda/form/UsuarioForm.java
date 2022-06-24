@@ -1,6 +1,7 @@
 package es.agenda.form;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 
@@ -10,11 +11,10 @@ public class UsuarioForm {
 	private Long id;
 	
 	@NotEmpty(message = "El nombre es obligatorio")
-	private String nombre;
+	private String usuario;
 	
-	@NotEmpty(message = "El password es obligatorios")
 	private String password;
 	
-	@NotEmpty(message = "El rol es obligatorios")
+	@NotNull(message = "El rol es obligatorios")
 	private Long roleId;
 }

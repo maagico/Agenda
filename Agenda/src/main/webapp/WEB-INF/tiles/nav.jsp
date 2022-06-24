@@ -36,15 +36,7 @@
 	          			</a>
 	          			
 	          		</sec:authorize>
-	          		<sec:authorize access="hasRole('ADMIN')">
-	          		
-	          			<a class="nav-link color-verde" aria-current="page" href="<c:url value='/admin/addUsuario'/>">
-	          				Añadir usuario 
-	          				<i class="bi bi-person-plus"></i>
-	          			</a>
-	          			
-	          		</sec:authorize>
-	          		
+	          		          		
 	        	</li>
 	        	
 	        	<li class="nav-item">
@@ -57,31 +49,53 @@
 	        	
       		</ul>
       		
-      		<c:if test = "${mostrarDeseleccionarBusqueda}">
-      			
-      			<span class = "busqueda-web">
-      			
-      				<a class = "nav-link color-verde" href="<c:url value='/web/listadoContactos'/>">
-      					Quitar búsqueda
-      				</a>
-      			</span>
-      		
+      		<c:if test = "${!quitarBuscador}">
+	      		
+	      		<c:if test = "${mostrarDeseleccionarBusqueda}">
+	      				
+	      			<sec:authorize access="hasRole('USUARIO')">
+	      				
+	      				<c:set var = "urlQuitarBusqueda" value = "/web/listadoContactos"/>
+	      				
+	      			</sec:authorize>
+	      			
+	      			<sec:authorize access="hasRole('ADMIN')">
+	      			
+	      				<c:set var = "urlQuitarBusqueda" value = "/admin/listadoUsuarios"/>
+	      				
+	      			</sec:authorize>
+	      				
+	      			<span class = "busqueda-web">
+	      			
+	      				<a class = "nav-link color-verde" href="<c:url value='${urlQuitarBusqueda}'/>">
+	      					Quitar búsqueda
+	      				</a>
+	      			</span>
+	      		
+	      		</c:if>
+	      		
+	      		<sec:authorize access="hasRole('USUARIO')">
+	      		
+	      			<c:set var = "placeBusqueda" value="Por nombre o apellidos"/>
+	      			<c:set var = "actionBusqueda" value="/web/buscarContactos"/>
+	      		
+	      		</sec:authorize>
+	      		
+	      		<sec:authorize access="hasRole('ADMIN')">
+	      		
+	      			<c:set var = "placeBusqueda" value="Por nombre"/>
+	      			<c:set var = "actionBusqueda" value="/admin/buscarUsuarios"/>
+	      		
+	      		</sec:authorize>
+	      		
+	      		<form id = "buscarForm"  name = "buscarForm" class="d-flex" role="search" action="${actionBusqueda}" method="get">
+	        		
+	        		<input class="form-control me-2" type="search" placeholder="${placeBusqueda}" aria-label="Buscar" id = "textoABuscar" name = "textoABuscar"/>
+	        		<button class="btn btn-outline-success" type="submit">Buscar</button>
+	      		
+	      		</form>
+	      		
       		</c:if>
-      		
-      		<sec:authorize access="hasRole('USUARIO')">
-      			<c:set var = "placeBusqueda" value="Por nombre o apellidos"/>
-      		</sec:authorize>
-      		
-      		<sec:authorize access="hasRole('ADMIN')">
-      			<c:set var = "placeBusqueda" value="Por nombre o rol"/>
-      		</sec:authorize>
-      		
-      		<form id = "buscarForm"  name = "buscarForm" class="d-flex" role="search" action="/web/buscarContactos" method="get">
-        		
-        		<input class="form-control me-2" type="search" placeholder="${placeBusqueda}" aria-label="Buscar" id = "textoABuscar" name = "textoABuscar"/>
-        		<button class="btn btn-outline-success" type="submit">Buscar</button>
-      		
-      		</form>
       		
     	</div>
     	

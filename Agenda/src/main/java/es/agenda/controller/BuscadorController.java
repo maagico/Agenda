@@ -11,14 +11,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import es.agenda.constantes.Constantes;
+import es.agenda.form.UsuarioForm;
 import es.agenda.model.Contacto;
+import es.agenda.model.Usuario;
 import es.agenda.service.ContactoServiceI;
+import es.agenda.service.UsuarioServiceI;
 
 @Controller
-public class BuscadorContactoController {
+public class BuscadorController {
 
 	@Autowired
 	private ContactoServiceI contactoService;
+	
+	@Autowired
+	private UsuarioServiceI usuarioService;
 	
 	@GetMapping("/web/buscarContactos")
 	public String buscarContactos(@RequestParam String textoABuscar,
@@ -34,4 +40,21 @@ public class BuscadorContactoController {
 		
 		return "web/listadoContactos";
 	}
+
+
+	@GetMapping("/admin/buscarUsuarios")
+	public String buscarUsuarios(@RequestParam String textoABuscar,
+								 HttpServletRequest request,
+							     Model model) {
+		
+		List<Usuario> usuariosEncontrados = usuarioService.buscarUsuarios(textoABuscar);
+		
+		model.addAttribute("usuarios", usuariosEncontrados);
+		model.addAttribute("mostrarDeseleccionarBusqueda", true);
+				
+		model.addAttribute("usuarioForm", new UsuarioForm());
+		
+		return "admin/listadoUsuarios";
+	}
+
 }

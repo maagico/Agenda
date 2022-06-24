@@ -37,7 +37,7 @@ public class LoginController {
         
         Long idUsuarioLogueado = usuarioLogueado.getId();
         
-        request.getSession().setAttribute(Constantes.ID_USUARIO_LOGUEADO, idUsuarioLogueado);
+        request.getSession(true).setAttribute(Constantes.ID_USUARIO_LOGUEADO, idUsuarioLogueado);
 		
 		boolean esAdmin = request.isUserInRole("ADMIN");
 		

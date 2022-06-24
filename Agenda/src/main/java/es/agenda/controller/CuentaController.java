@@ -61,7 +61,6 @@ public class CuentaController {
 			Usuario usuario = new Usuario();
 			BeanUtils.copyProperties(usuario, cuentaForm);
 			
-			
 			Long roleId = cuentaForm.getRoleId();
 			Rol rol = rolService.findById(roleId);
 			usuario.setRol(rol);

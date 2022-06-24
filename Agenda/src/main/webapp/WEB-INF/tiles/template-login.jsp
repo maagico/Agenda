@@ -23,8 +23,7 @@
 		
 		    <tiles:insertAttribute name="body"/>
 		    <tiles:insertAttribute name="footer"/>	 			    	    
-		    <tiles:insertAttribute name="footer-resources"/>
-			
+		   		
 	    </div>
 	    
 	</body>

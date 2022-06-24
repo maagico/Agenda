@@ -49,11 +49,23 @@ public class UsuarioDaoImpl extends GenericDaoImpl<Usuario> implements UsuarioDa
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Usuario> findAllOrderByNombre() {
+	public List<Usuario> findAllUsuariosOrderByNombre() {
 		
-		String jpql = "Select U from Usuario U order by U.usuario";
+		String jpql = "Select U from Usuario U where U.rol.rol = 'ROLE_USUARIO' order by U.usuario";
 		
 		Query query = entityManager.createQuery(jpql);
+		
+		return (List<Usuario>)query.getResultList();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Usuario> buscarUsuarios(String textoABuscar) {
+		
+		String jpql = "select U from Usuario U where U.usuario like :textoABuscar and U.rol.rol = 'ROLE_USUARIO' order by U.usuario";
+		
+		Query query =  entityManager.createQuery(jpql);
+		query.setParameter("textoABuscar", textoABuscar);
 		
 		return (List<Usuario>)query.getResultList();
 	}

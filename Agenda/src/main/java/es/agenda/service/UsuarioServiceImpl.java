@@ -18,7 +18,6 @@ public class UsuarioServiceImpl extends GenericServiceImpl<Usuario, UsuarioDaoI>
 	
 	public Usuario guardarUsuario(Usuario usuario) throws UsuarioYaExisteException {
 	
-		
 		String nombreUsuario = usuario.getUsuario();
 		String password = usuario.getPassword();
 		
@@ -46,8 +45,17 @@ public class UsuarioServiceImpl extends GenericServiceImpl<Usuario, UsuarioDaoI>
 	}
  
 	@Override
-	public List<Usuario> findAllOrderByNombre() {
+	public List<Usuario> findAllUsuariosOrderByNombre() {
 		
-		return dao.findAllOrderByNombre();
+		return dao.findAllUsuariosOrderByNombre();
+	}
+
+	@Override
+	public List<Usuario> buscarUsuarios(String textoABuscar) {
+		
+		textoABuscar = " " + textoABuscar + " ";
+		textoABuscar = textoABuscar.replace(" ", "%");
+		
+		return dao.buscarUsuarios(textoABuscar);
 	}
 }

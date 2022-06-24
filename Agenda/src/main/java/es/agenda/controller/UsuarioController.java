@@ -1,7 +1,8 @@
 package es.agenda.controller;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import es.agenda.form.UsuarioForm;
-import es.agenda.model.Rol;
+import es.agenda.model.Contacto;
 import es.agenda.model.Usuario;
-import es.agenda.service.RolServiceI;
+import es.agenda.service.ContactoServiceI;
 import es.agenda.service.UsuarioServiceI;
 
 @Controller
@@ -24,49 +25,38 @@ public class UsuarioController {
 	private UsuarioServiceI usuarioService;
 	
 	@Autowired
-	private RolServiceI rolService;
-	
-	@GetMapping("/admin/addUsuario")
-	public String addUsuario(Model model) {
-		
-		model.addAttribute("usuarioForm", new UsuarioForm());
-		
-		List<Rol> roles = rolService.findAll();
-		model.addAttribute("roles", roles);
-		
-		model.addAttribute("esCreacion", true);
-		
-		return "admin/editarUsuario";
-	}
+	private ContactoServiceI contactoService;
 	
 	@GetMapping("/admin/listadoUsuarios")
-	public String listadoUsuarios(Model model) {
+	public String listadoUsuarios(HttpServletRequest request,
+								  Model model) {
 		
-		List<Usuario> usuarios = usuarioService.findAllOrderByNombre();
+		List<Usuario> usuarios = usuarioService.findAllUsuariosOrderByNombre();
 		
 		model.addAttribute("usuarios", usuarios);
+		
+		model.addAttribute("usuarioForm", new UsuarioForm());
 		
 		return "admin/listadoUsuarios";
 	}
 	
-	@GetMapping("/admin/editarUsuario")
-	public String editarContacto(@RequestParam Long id,
-							     Model model) throws IllegalAccessException, InvocationTargetException {
+	@GetMapping("/admin/listadoContactos")
+	public String listadoContactos(@RequestParam Long idUsuario,
+								   HttpServletRequest request,
+								   Model model) {
 		
-		Usuario usuario = usuarioService.findById(id);
-				
-		UsuarioForm usuarioForm = populateUsuarioForm(usuario);
+					
+		List<Contacto> contactos = contactoService.findAllOrderByNombre(idUsuario);
 		
-		model.addAttribute("usuarioForm", usuarioForm);
+		model.addAttribute("contactos", contactos);
 		
-		List<Rol> roles = rolService.findAll();
-		model.addAttribute("roles", roles);
+		model.addAttribute("quitarBuscador", true);
 		
-		model.addAttribute("esCreacion", false);
+		model.addAttribute("numeroContactos", contactos.size());
 		
-		return "admin/editarUsuario"; 
-		
+		return "admin/listadoContactos";
 	}
+	
 	
 	@PostMapping("/admin/eliminarUsuario")
 	public String eliminarUsuario(UsuarioForm usuarioForm,
@@ -82,22 +72,5 @@ public class UsuarioController {
 		redirectAttributes.addFlashAttribute("mensaje", "Usuario eliminado correctamente");
 				
 		return "redirect:/admin/listadoUsuarios";
-	}
-	
-	private UsuarioForm populateUsuarioForm(Usuario usuario){
-		
-		UsuarioForm usuarioForm = new UsuarioForm();
-		
-		Long id = usuario.getId();
-		String nombre = usuario.getUsuario();
-		String password = "";
-		Long roleId = usuario.getRol().getId();
-		
-		usuarioForm.setId(id);
-		usuarioForm.setNombre(nombre);
-		usuarioForm.setPassword(password);
-		usuarioForm.setRoleId(roleId);
-			
-		return usuarioForm;
 	}
 }
