@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-06-2022 a las 19:47:32
+-- Tiempo de generación: 25-06-2022 a las 00:13:51
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -39,7 +39,9 @@ CREATE TABLE `contactos` (
 --
 
 INSERT INTO `contactos` (`id`, `nombre`, `apellidos`, `usuario_id`) VALUES
-(2, 'Peter', 'Parker', 1);
+(3, 'Peter', 'Parker', 3),
+(4, 'Bruce', 'Wayne', 3),
+(5, 'Dare', 'Devil', 4);
 
 -- --------------------------------------------------------
 
@@ -58,7 +60,9 @@ CREATE TABLE `correos` (
 --
 
 INSERT INTO `correos` (`id`, `correo`, `contacto_id`) VALUES
-(2, 'peter@foo.com', 2);
+(15, 'peter@foo.com', 3),
+(16, 'bruce@wayne.com', 4),
+(17, 'daredevil@marvel.com', 5);
 
 -- --------------------------------------------------------
 
@@ -97,7 +101,10 @@ CREATE TABLE `telefonos` (
 --
 
 INSERT INTO `telefonos` (`id`, `numero`, `contacto_id`) VALUES
-(3, '987654321', 2);
+(16, '123456789', 3),
+(17, '987654321', 3),
+(18, '675436087', 4),
+(19, '876567654', 5);
 
 -- --------------------------------------------------------
 
@@ -117,7 +124,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `usuario`, `password`, `role_id`) VALUES
-(1, 'usuario', '$2a$10$MymULtlBCXsSK4jyOJ/wxecBg1XV2fjZ46fZaQfyfoFK5iF3ZNLyi', 3);
+(2, 'admin', '$2a$10$C6IMLHb5Rt1VWBBTXhyxw.EmTBXcg//9yTxU1LhtvwvmBx4IT43x2', 4),
+(3, 'miguel', '$2a$10$Fblca.8cb09FT80exfxYkerHrPIBS6PNYKo57YOAmVssZT/QrE.Lu', 3),
+(4, 'angel', '$2a$10$te2TNGvvCQEuPQUa1eU7JO6DDpsqO4ldoDqwzBSj65G07CkCriJFK', 3);
 
 --
 -- Índices para tablas volcadas
@@ -165,13 +174,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `contactos`
 --
 ALTER TABLE `contactos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `correos`
 --
 ALTER TABLE `correos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -183,13 +192,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `telefonos`
 --
 ALTER TABLE `telefonos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
