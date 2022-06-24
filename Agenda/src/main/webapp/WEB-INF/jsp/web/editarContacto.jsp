@@ -104,7 +104,7 @@
 
 			function irAListadoContactos(){
 
-				location.href = "/web/listadoContactos";
+				location.href = "<c:url value = '/web/listadoContactos'/>";
 			}
 
 		</script>
