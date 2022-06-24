@@ -50,50 +50,50 @@
 
 			function addCampoTelefono(telefono){
 
-				let campoTelefonoDiv = "<div class='col-5' id = 'addCampoTelefonoDiv" + contadorCampoTelefono + "'>";
+				let campoTelefonoDiv = "<div class='col-5 addCampoTelefonoDiv' id ='addCampoTelefonoDiv" + contadorCampoTelefono + "'>";
 				campoTelefonoDiv +=    "	<div class='form-floating mb-3'>";
 				campoTelefonoDiv +=    "		<input name = 'telefonos' type='tel' class='form-control' id='telefono" + contadorCampoTelefono + "' placeholder='Teléfono' maxlength='9' pattern='[0-9]{9}' value = '" + telefono + "'/>";
 				campoTelefonoDiv +=    "		<label for='telefono'>Teléfono</label>";
 				campoTelefonoDiv +=    "	</div>";
 				campoTelefonoDiv +=    "</div>";
 				
-				let enlaceCampoTelefono = "<div class='col-5' id = 'addOtroTelefonoDiv" + contadorCampoTelefono + "'>";
+				let enlaceCampoTelefono = "<div class='col-5 addOtroTelefonoDiv' id = 'addOtroTelefonoDiv" + contadorCampoTelefono + "'>";
 				enlaceCampoTelefono +=    "		<a class='nav-link color-rojo quitarCampoTelefono'  id = 'quitarTelefono' href = 'javascript:quitarCampoTelefono(" + contadorCampoTelefono + ");'>";
 				enlaceCampoTelefono +=    "			Quitar teléfono ";
 				enlaceCampoTelefono +=    "  		<i class='bi bi-x-circle' title='Quitar teléfono'></i>";
 				enlaceCampoTelefono +=    "  	</a> Introducir 9 dígitos ";
 				enlaceCampoTelefono +=    "</div>";
 
-				$("#addOtroTelefonoDiv").after(campoTelefonoDiv + enlaceCampoTelefono);
+				$(".addOtroTelefonoDiv:last").after(campoTelefonoDiv + enlaceCampoTelefono);
 
 				contadorCampoTelefono++;
 			}
 
+			function quitarCampoTelefono(id){
+
+				$("#addCampoTelefonoDiv" + id).remove();
+				$("#addOtroTelefonoDiv" + id).remove();
+			}
+			
 			function addCampoCorreo(correo){
 				
-				let campoCorreoDiv = "<div class='col-5' id = 'addCampoCorreoDiv" + contadorCampoCorreo + "'>";
+				let campoCorreoDiv = "<div class='col-5 addCampoTelefonoDiv' id = 'addCampoCorreoDiv" + contadorCampoCorreo + "'>";
 				campoCorreoDiv +=    "	<div class='form-floating mb-3'>";
 				campoCorreoDiv +=    "		<input type='email' name = 'correos' class='form-control' id = 'correo" + contadorCampoCorreo + "' placeholder='Correo' maxlength='70'' value = '" + correo + "'>";
 				campoCorreoDiv +=    "		<label for='correo'>Correo</label>";
 				campoCorreoDiv +=    "	</div>";
 				campoCorreoDiv +=    "</div>";
 				
-				let enlaceCampoCorreo = "<div class='col-5' id = 'addOtroCorreoDiv" + contadorCampoCorreo + "'>";
+				let enlaceCampoCorreo = "<div class='col-5 addOtroCorreoDiv' id = 'addOtroCorreoDiv" + contadorCampoCorreo + "'>";
 				enlaceCampoCorreo +=    "		<a class='nav-link color-rojo' href = 'javascript:quitarCampoCorreo(" + contadorCampoCorreo + ");'>";
 				enlaceCampoCorreo +=    "			Quitar correo ";
 				enlaceCampoCorreo +=    "  		<i class='bi bi-x-circle' title='Quitar correo'></i>";
 				enlaceCampoCorreo +=    "  	</a>";
 				enlaceCampoCorreo +=    "</div>";
 
-				$("#addOtroCorreoDiv").after(campoCorreoDiv + enlaceCampoCorreo);
+				$(".addOtroCorreoDiv:last").after(campoCorreoDiv + enlaceCampoCorreo);
 
 				contadorCampoCorreo++;
-			}
-
-			function quitarCampoTelefono(id){
-				
-				$("#addCampoTelefonoDiv" + id).remove();
-				$("#addOtroTelefonoDiv" + id).remove();
 			}
 
 			function quitarCampoCorreo(id){
@@ -170,7 +170,7 @@
 								
 							</div>
 							
-							<div class="col-5" id = "addOtroTelefonoDiv">
+							<div class="col-5 addOtroTelefonoDiv">
 							
 								<a class="nav-link color-verde"  href = "#" id = "addTelefono" onclick = "addCampoTelefono('');return false;">
 									Añadir otro teléfono
@@ -207,7 +207,7 @@
 								
 							</div>
 						
-							<div class="col-5" id = "addOtroCorreoDiv">
+							<div class="col-5 addOtroCorreoDiv">
 								
 								<a class="nav-link color-verde"  href = "#" id = "addCorreo" onclick = "addCampoCorreo('');return false;">
 									Añadir otro correo
