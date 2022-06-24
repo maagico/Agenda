@@ -83,7 +83,7 @@
 	      		
 	      		<sec:authorize access="hasRole('ADMIN')">
 	      		
-	      			<c:set var = "placeBusqueda" value="Por nombre"/>
+	      			<c:set var = "placeBusqueda" value="Por usuario"/>
 	      			<c:set var = "actionBusqueda" value="/admin/buscarUsuarios"/>
 	      		
 	      		</sec:authorize>
