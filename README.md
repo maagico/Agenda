@@ -58,7 +58,7 @@ Crear un nuevo usuario:
 
 ![Creación de usuario](/Agenda/assets/imagenes/crear_usuario.png)
 
-Una vez logueado con un usuario con rol _USUARIO_ veremos los contactos el usuario:
+Una vez logueado con un usuario con rol _USUARIO_ veremos sus contactos:
 
 ![Login de la agenda](/Agenda/assets/imagenes/listado_contactos.png)
 
