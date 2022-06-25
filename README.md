@@ -66,6 +66,14 @@ Pantalla de edición de un contacto:
 
 ![Login de la agenda](/Agenda/assets/imagenes/modificar_contacto.png)
 
+Pantalla de inicio de un usuario con rol _ADMIN_ en la que vemos todos los usuarios de la aplicación:
+
+![Login de la agenda](/Agenda/assets/imagenes/listado_usuarios.png)
+
+Listado de contactos de un usuario:
+
+![Login de la agenda](/Agenda/assets/imagenes/listado_contactos_usuario.png)
+
 ### Licencia
 
 MIT
