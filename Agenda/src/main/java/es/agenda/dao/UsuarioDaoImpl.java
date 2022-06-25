@@ -62,7 +62,7 @@ public class UsuarioDaoImpl extends GenericDaoImpl<Usuario> implements UsuarioDa
 	@Override
 	public List<Usuario> buscarUsuarios(String textoABuscar) {
 		
-		String jpql = "select U from Usuario U where U.usuario like :textoABuscar and U.rol.rol = 'ROLE_USUARIO' order by U.usuario";
+		String jpql = "select U from Usuario U where LOWER(U.usuario) like :textoABuscar and U.rol.rol = 'ROLE_USUARIO' order by U.usuario";
 		
 		Query query =  entityManager.createQuery(jpql);
 		query.setParameter("textoABuscar", textoABuscar);

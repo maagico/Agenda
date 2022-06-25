@@ -33,7 +33,7 @@ public class BuscadorController {
 		
 		Long idUsuarioLogueado = (Long)request.getSession().getAttribute(Constantes.ID_USUARIO_LOGUEADO);
 		
-		List<Contacto> contactosEncontrados = contactoService.buscarContactos(idUsuarioLogueado, textoABuscar);
+		List<Contacto> contactosEncontrados = contactoService.buscarContactos(idUsuarioLogueado, textoABuscar.toLowerCase());
 		
 		model.addAttribute("contactos", contactosEncontrados);
 		model.addAttribute("mostrarDeseleccionarBusqueda", true);
@@ -47,7 +47,7 @@ public class BuscadorController {
 								 HttpServletRequest request,
 							     Model model) {
 		
-		List<Usuario> usuariosEncontrados = usuarioService.buscarUsuarios(textoABuscar);
+		List<Usuario> usuariosEncontrados = usuarioService.buscarUsuarios(textoABuscar.toLowerCase());
 		
 		model.addAttribute("usuarios", usuariosEncontrados);
 		model.addAttribute("mostrarDeseleccionarBusqueda", true);
