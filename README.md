@@ -50,7 +50,21 @@ La aplicación permite crear tantos usuarios como sean necesarios.
 
 ### Imágenes
 
-![Login de la agenda](/Agenda/assets/images/electrocat.png)
+Login:
+
+![Login de la agenda](/Agenda/assets/imagenes/login.png)
+
+Crear un nuevo usuario:
+
+![Creación de usuario](/Agenda/assets/imagenes/crear_usuario.png)
+
+Una vez logueado con un usuario con rol _USUARIO_ veremos los contactos el usuario:
+
+![Login de la agenda](/Agenda/assets/imagenes/listado_contactos.png)
+
+Pantalla de edición de un contacto:
+
+![Login de la agenda](/Agenda/assets/imagenes/modificar_contacto.png)
 
 ### Licencia
 
