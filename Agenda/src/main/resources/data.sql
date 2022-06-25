@@ -14,7 +14,7 @@ INSERT INTO `contactos` (`id`, `nombre`, `apellidos`, `usuario_id`) VALUES
 
 INSERT INTO `correos` (`id`, `correo`, `contacto_id`) VALUES
 (19, 'peter@parker.com', 6),
-(20, 'bruce@indutriaswayne.com', 7),
+(20, 'bruce@industriaswayne.com', 7),
 (21, 'hulk@marvel.com', 8);
 
 INSERT INTO `telefonos` (`id`, `numero`, `contacto_id`) VALUES
