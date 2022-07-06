@@ -20,7 +20,7 @@ Apicación web Agenda hecha en Java para probar varias tecnologías:
 
 ### Ejecución
 
-Se despliega en un Tomcat y en una base de datos H2 en memoria, cargada en cada arranque de la aplicación con los datos que hay en el fichero data.sql del directorio resources.
+Se despliega en un Tomcat y en una base de datos H2 en memoria. La base de datos se carga en cada arranque de la aplicación con los datos que hay en el fichero data.sql del directorio resources.
 
 Para levantar la aplicación primero crear el archivo war con el comando:
 
