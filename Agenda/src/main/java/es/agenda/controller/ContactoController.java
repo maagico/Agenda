@@ -115,10 +115,14 @@ public class ContactoController {
 	}
 
 	@GetMapping("/web/editarContacto")
-	public String editarContacto(@RequestParam Long id,
+	public String editarContacto(HttpServletRequest request,
+								 @RequestParam Long id,
 							     Model model) throws IllegalAccessException, InvocationTargetException {
 		
-		Contacto contacto = contactoService.findById(id);
+		Long idUsuarioLogueado = (Long)request.getSession().getAttribute(Constantes.ID_USUARIO_LOGUEADO);
+		
+		
+		Contacto contacto = contactoService.findById(idUsuarioLogueado, id);
 				
 		ContactoForm contactoForm = populateContactoForm(contacto);
 		

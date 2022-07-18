@@ -15,6 +15,18 @@ public class ContactoDaoImpl extends GenericDaoImpl<Contacto> implements Contact
 		super(Contacto.class);
 	}
 
+	@Override
+	public Contacto findById(Long idUsuarioLogueado, Long id) {
+		
+		String jpql = "select C from Contacto C where C.usuario.id = :idUsuarioLogueado and C.id = :id";
+		
+		Query query =  entityManager.createQuery(jpql);
+		query.setParameter("idUsuarioLogueado", idUsuarioLogueado);
+		query.setParameter("id", id);
+		
+		return (Contacto)query.getSingleResult();
+	}
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Contacto> findAllOrderByNombre(Long idUsuarioLogueado) {
