@@ -1,7 +1,6 @@
 package es.agenda.controller;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -85,7 +84,6 @@ public class ContactoController {
 		
 		model.addAttribute("esCreacion", false);
 
-				
 		return "web/editarContacto";
 	}
 	
@@ -109,7 +107,6 @@ public class ContactoController {
 		model.addAttribute("mensaje", "Contacto modificado correctamente");
 		
 		model.addAttribute("esCreacion", false);
-
 				
 		return "web/editarContacto";
 	}
@@ -150,56 +147,58 @@ public class ContactoController {
 		return "redirect:/web/listadoContactos";
 	}
 	
-	private Contacto populateContacto(Usuario usuarioLogueado, ContactoForm crearContactoForm) {
+	private Contacto populateContacto(Usuario usuarioLogueado, ContactoForm contactoForm) {
 		
-		if(crearContactoForm.getTelefonos() == null || crearContactoForm.getTelefonos().isEmpty()) {
-			crearContactoForm.setTelefonos(List.of(""));
+		if(contactoForm.getTelefonos() == null || contactoForm.getTelefonos().isEmpty()) {
+			contactoForm.setTelefonos(List.of(""));
 		}
 		
-		if(crearContactoForm.getCorreos() == null || crearContactoForm.getCorreos().isEmpty()) {
-			crearContactoForm.setCorreos(List.of(""));
+		if(contactoForm.getCorreos() == null || contactoForm.getCorreos().isEmpty()) {
+			contactoForm.setCorreos(List.of(""));
 		}
 		
 		Contacto contacto = new Contacto();
 		
-		Long id = crearContactoForm.getId();
-		String nombre = crearContactoForm.getNombre();
-		String apellidos = crearContactoForm.getApellidos();
+		Long id = contactoForm.getId();
+		String nombre = contactoForm.getNombre();
+		String apellidos = contactoForm.getApellidos();
 				
 		contacto.setId(id);
 		contacto.setNombre(nombre);
 		contacto.setApellidos(apellidos);
 		contacto.setUsuario(usuarioLogueado);
-		
-		List<Telefono> telefonos = new ArrayList<>();
-		
-		for(String numero : crearContactoForm.getTelefonos()) {
 			
-			if(numero != null && !numero.equals("")){
-				
+		List<Telefono> telefonos = contactoForm.getTelefonos()
+			.stream()
+			.filter(t -> t != null && !t.equals(""))
+			.map(t -> {
+			
 				Telefono telefono = new Telefono();
 				
-				telefono.setNumero(numero);
+				telefono.setNumero(t);
 				telefono.setContacto(contacto);
-				telefonos.add(telefono);
-			}
-		}
+				
+				return telefono;
+			
+			})
+			.collect(Collectors.toList());
 		
 		contacto.setTelefonos(telefonos);
-		
-		List<Correo> correos = new ArrayList<>();
-		
-		for(String correo : crearContactoForm.getCorreos()) {
-			
-			if(correo != null && !correo.equals("")){
 				
+		List<Correo> correos = contactoForm.getCorreos()
+			.stream()
+			.filter(c -> c != null && !c.equals(""))
+			.map(c -> {
+			
 				Correo email = new Correo();
 				
-				email.setCorreo(correo);
+				email.setCorreo(c);
 				email.setContacto(contacto);
-				correos.add(email);
-			}
-		}
+								
+				return email;
+			
+			})
+			.collect(Collectors.toList());
 		
 		contacto.setCorreos(correos);
 		
@@ -220,8 +219,7 @@ public class ContactoController {
 		
 		List<String> telefonosForm = contacto.getTelefonos()
 											  .stream()
-											  .filter(t -> t.getNumero() != null && !t.getNumero()
-											  .equals(""))
+											  .filter(t -> t.getNumero() != null && !t.getNumero().equals(""))
 											  .map(Telefono::getNumero)
 											  .collect(Collectors.toList());
 				
@@ -229,8 +227,7 @@ public class ContactoController {
 		
 		List<String> correosForm = contacto.getCorreos()
 										  .stream()
-										  .filter(c -> c.getCorreo() != null && !c.getCorreo()
-										  .equals(""))
+										  .filter(c -> c.getCorreo() != null && !c.getCorreo().equals(""))
 										  .map(Correo::getCorreo)
 										  .collect(Collectors.toList());
 		
