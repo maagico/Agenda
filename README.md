@@ -1,6 +1,6 @@
 # Agenda
 ## _Otra simple agenda más_
-Apicación web Agenda hecha en Java para probar varias tecnologías:
+Aplicación web Agenda hecha en Java para probar varias tecnologías:
 
 #### Front:
 - JSP
